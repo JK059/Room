@@ -1,0 +1,4 @@
+FROM eclipse-temurin:17-jdk-alpine
+ARG VERSION=v1
+COPY target/room-booking-*.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
