@@ -23,6 +23,31 @@ public class App {
         }
         return "Cancellation Failed: Room was not booked.";
     }
+    // v3: Maintain Accurate Availability Status
+    public List<Integer> getAvailableRooms() {
+        List<Integer> available = new ArrayList<>();
+        for (int i = 1; i <= TOTAL_ROOMS; i++) {
+            if (!bookedRooms.contains(i)) {
+                available.add(i);
+            }
+        }
+        return available;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Room Booking Service is running on Localhost...");
+        
+        // This loop keeps the application alive inside your Docker container/K8s pod
+        while (true) {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                System.out.println("Service Interrupted");
+                break;
+            }
+        }
+    }
+}
 
     
     
