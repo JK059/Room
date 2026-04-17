@@ -1,4 +1,15 @@
-FROM eclipse-temurin:17-jdk-alpine
-ARG VERSION=v1
-COPY target/room-booking-*.jar app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Use JDK 17 to run the app
+FROM openjdk:17-jdk-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy the JAR from the target folder to the container
+# This matches the successful build in your Jenkins log
+COPY target/room-booking-1.0.0.jar app.jar
+
+# Expose the port your UI runs on
+EXPOSE 8080
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
