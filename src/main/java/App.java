@@ -6,14 +6,4 @@ public class App {
     private final Set<Integer> bookedRooms = new HashSet<>();
     private final int TOTAL_ROOMS = 10;
 
-    // v1: Develop Room Booking Logic
-    public String bookRoom(int roomNumber) {
-        if (roomNumber < 1 || roomNumber > TOTAL_ROOMS) {
-            return "Invalid Room Number";
-        }
-        if (bookedRooms.contains(roomNumber)) {
-            return "Room already booked! Double-booking prevented.";
-        }
-        bookedRooms.add(roomNumber);
-        return "Booking Successful for room: " + roomNumber;
-    }
+    
