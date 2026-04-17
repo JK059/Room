@@ -1,31 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: booking-v3
+  name: room-booking-v3
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: booking
+      app: room-booking
   template:
     metadata:
       labels:
-        app: booking
+        app: room-booking
     spec:
       containers:
-      - name: booking-app
-        image: your-docker-id/room-booking:v3
+      - name: room-booking-container
+        image: jayakumaran/room-booking:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: booking-service
+  name: room-booking-service
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 8080
+  type: NodePort
   selector:
-    app: booking
+    app: room-booking
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001
