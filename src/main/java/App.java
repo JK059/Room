@@ -16,6 +16,13 @@ public class App {
         bookedRooms.add(roomNumber);
         return "Booking Successful for room: " + roomNumber;
     }
+     // v2: Develop Cancellation Logic
+    public String cancelBooking(int roomNumber) {
+        if (bookedRooms.remove(roomNumber)) {
+            return "Cancellation Successful for room: " + roomNumber;
+        }
+        return "Cancellation Failed: Room was not booked.";
+    }
 
     
     
